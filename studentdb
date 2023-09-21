@@ -1,0 +1,319 @@
+
+MongoDb Aggregation:
+Mongodb aggregation is framework or concept which is used to manipulate and understand the data in better way
+With this, we can perform on you our data filtering,grouping ,sorting,
+or performing any calculation.
+Joining
+1.$match->filter data based on certain criteria.
+Age is greather than or equal to 18
+{$match:{age:$gte:18}}}
+2.$group
+3.$sort->sort the document based on some data
+{$sort:{price:-1} 
+4.$project->
+5.$limit $skip
+
+mongo url password
+
+Get the maximum age from all the students collection.
+
+max
+calculate the total count of students
+
+FInd out the names of students in grade 'A'
+Find the Youngest Student
+Group the students by grade and sort them by the number of students in
+each grade
+id->group grade field all values having same grade value will be grouped 
+togeter,
+
+count-sum operation 
+Group students by age and calculate the count,sorting in descending order
+Agile Team->MNC
+Scrum ,project manager,Team Leads,Design team,
+dev,test,prodction team ,release engineer and deployment.
+
+MERN->MERN stack
+1.Coding platform->
+500 or 1000 question
+leetcode
+hackerank
+xyz->
+
+2.paid internship->
+internshala-3months
+
+3.Agile->
+4.Devops and AWS->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Microsoft Windows [Version 10.0.19045.3086]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MongoDB\Server\5.0\bin>mongo
+MongoDB shell version v5.0.18
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("cd8e671a-9bbc-4109-90c4-035e45d999ea") }
+MongoDB server version: 5.0.18
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2023-06-20T18:42:31.336+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+WARNING: some history file lines were truncated at 4095 bytes.
+> use Student
+switched to db Student
+> db.students.insertMany([
+... {name:'john',age:20,grade:'A'},
+... {name:'Shivam',age:23,grade:'B'},
+... {name:'Amir',age:21,grade:'A'},
+... {name:'Pardeep',age:25,grade:'C'},
+... {name:'Swapnil',age:38,grade:'B'}
+... ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("649466cf9d45caafeedd1dd4"),
+                ObjectId("649466cf9d45caafeedd1dd5"),
+                ObjectId("649466cf9d45caafeedd1dd6"),
+                ObjectId("649466cf9d45caafeedd1dd7"),
+                ObjectId("649466cf9d45caafeedd1dd8")
+        ]
+}
+> db.students.find().toArray()
+[
+        {
+                "_id" : ObjectId("649466cf9d45caafeedd1dd4"),
+                "name" : "john",
+                "age" : 20,
+                "grade" : "A"
+        },
+        {
+                "_id" : ObjectId("649466cf9d45caafeedd1dd5"),
+                "name" : "Shivam",
+                "age" : 23,
+                "grade" : "B"
+        },
+        {
+                "_id" : ObjectId("649466cf9d45caafeedd1dd6"),
+                "name" : "Amir",
+                "age" : 21,
+                "grade" : "A"
+        },
+        {
+                "_id" : ObjectId("649466cf9d45caafeedd1dd7"),
+                "name" : "Pardeep",
+                "age" : 25,
+                "grade" : "C"
+        },
+        {
+                "_id" : ObjectId("649466cf9d45caafeedd1dd8"),
+                "name" : "Swapnil",
+                "age" : 38,
+                "grade" : "B"
+        }
+]
+> db.students.aggregate([
+... {$match:{grade:'A'}},
+... {$group:{_id:'$grade',count:{$sum:1}}},
+... {$project:{_id:0,grade:'$id',count:1}}
+... ])
+{ "count" : 2 }
+> db.students.insertMany([
+... {name:'Leonard',age:32,grade:'B'},
+... {name:'Abhijeet',age:28,grade:'C'},
+... {name:'Mahesh',age:21,grade:'A'},
+... {name:'Sohan'age:23,grade:'B'}
+... ,
+... ])
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):5:13
+> db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',age:21,grade:'A'}, {name:'Sohan'age:23,graddb.students.aggregate([ {$match:{grade:'A'}}, {$group:{_id:'$grade',count:{$sdb.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',age:21,grade:'A'}, {name:'Sohan'age:23,graddb.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',age:21,grade:'A'}, {name:'Sohan'age:23,graddb.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',age:21,grade:'A'db.students.aggregate([ {$match:{grade:'A'}}, {$group:{_id:'$grade',count:{$sum:1}}}, {$project:{_id:0,grade:'$db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',age:21,grade:'A'}, {name:'Sohan'age:23,gra;, ])
+... ;
+... ;
+... ^C
+
+> db.students.insertMany([ {name:'Leonard',age:32,grade:'B'}, {name:'Abhijeet',age:28,grade:'C'}, {name:'Mahesh',age:21,grade:'A'}, {name:'Sohan',age:23,grade:'B'} , ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6494698f9d45caafeedd1dd9"),
+                ObjectId("6494698f9d45caafeedd1dda"),
+                ObjectId("6494698f9d45caafeedd1ddb"),
+                ObjectId("6494698f9d45caafeedd1ddc")
+        ]
+}
+> db.students.aggregate([
+... {$group:{_id:'$grade',count:{$sum:1}}}
+... ])
+{ "_id" : "A", "count" : 3 }
+{ "_id" : "B", "count" : 4 }
+{ "_id" : "C", "count" : 2 }
+> db.students.aggregate([
+... {$group:{_id:null,averageAge:{$avg:'$age'}}}
+... ])
+{ "_id" : null, "averageAge" : 25.666666666666668 }
+> db.students.aggregate([
+... {$match:{age:{$gt:23}}}
+... ])
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd7"), "name" : "Pardeep", "age" : 25, "grade" : "C" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd8"), "name" : "Swapnil", "age" : 38, "grade" : "B" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1dd9"), "name" : "Leonard", "age" : 32, "grade" : "B" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1dda"), "name" : "Abhijeet", "age" : 28, "grade" : "C" }
+> db.students.aggregate([
+... {$group:{_id:null,MaxAge:{$max:'$age'}}}
+... ])
+{ "_id" : null, "MaxAge" : 38 }
+> db.students.aggregate([
+... {$group:{_id:null,totalCount:{$sum:1}}}
+... ])
+{ "_id" : null, "totalCount" : 9 }
+> db.students.aggregate([
+... {$match:{grade:'A'}},
+... {$project:{_id:null,name:1}}
+... ])
+{ "name" : "john", "_id" : null }
+{ "name" : "Amir", "_id" : null }
+{ "name" : "Mahesh", "_id" : null }
+> db.students.aggregate([ {$match:{grade:'A'}}, {$project:{_id:0,name:1}} ])
+{ "name" : "john" }
+{ "name" : "Amir" }
+{ "name" : "Mahesh" }
+> db.students.aggregate([
+... {$sort:{age:1}},
+... {$limit:1}
+... ])
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd4"), "name" : "john", "age" : 20, "grade" : "A" }
+> db.students.aggregate([ {$sort:{age:1}}])
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd4"), "name" : "john", "age" : 20, "grade" : "A" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd6"), "name" : "Amir", "age" : 21, "grade" : "A" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1ddb"), "name" : "Mahesh", "age" : 21, "grade" : "A" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd5"), "name" : "Shivam", "age" : 23, "grade" : "B" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1ddc"), "name" : "Sohan", "age" : 23, "grade" : "B" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd7"), "name" : "Pardeep", "age" : 25, "grade" : "C" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1dda"), "name" : "Abhijeet", "age" : 28, "grade" : "C" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1dd9"), "name" : "Leonard", "age" : 32, "grade" : "B" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd8"), "name" : "Swapnil", "age" : 38, "grade" : "B" }
+> db.students.aggregate([ {$sort:{age:-1}}])
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd8"), "name" : "Swapnil", "age" : 38, "grade" : "B" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1dd9"), "name" : "Leonard", "age" : 32, "grade" : "B" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1dda"), "name" : "Abhijeet", "age" : 28, "grade" : "C" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd7"), "name" : "Pardeep", "age" : 25, "grade" : "C" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd5"), "name" : "Shivam", "age" : 23, "grade" : "B" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1ddc"), "name" : "Sohan", "age" : 23, "grade" : "B" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd6"), "name" : "Amir", "age" : 21, "grade" : "A" }
+{ "_id" : ObjectId("6494698f9d45caafeedd1ddb"), "name" : "Mahesh", "age" : 21, "grade" : "A" }
+{ "_id" : ObjectId("649466cf9d45caafeedd1dd4"), "name" : "john", "age" : 20, "grade" : "A" }
+> db.students.aggregate([ {$sort:{age:0}}])
+uncaught exception: Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "$sort key ordering must be 1 (for ascending) or -1 (for descending)",
+        "code" : 15975,
+        "codeName" : "Location15975"
+} with original command request: {
+        "aggregate" : "students",
+        "pipeline" : [
+                {
+                        "$sort" : {
+                                "age" : 0
+                        }
+                }
+        ],
+        "cursor" : {
+
+        },
+        "lsid" : {
+                "id" : UUID("cd8e671a-9bbc-4109-90c4-035e45d999ea")
+        }
+} on connection: connection to 127.0.0.1:27017 : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:759:17
+assert.commandWorked@src/mongo/shell/assert.js:851:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:281:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1058:12
+@(shell):1:1
+> db.students.aggregate([
+... {$group:{_id:'$grade',count:{$sum:1}}},
+... ${sort:{count:-1}}
+... ])
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):3:1
+> db.students.aggregate([ {$group:{_id:'$grade',count:{$sum:1}}}, ${sort:{count:-1}}])
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:65
+> db.students.aggregate([ {$group:{_id:'$grade',count:{$sum:1}}}, {$sort:{count:-1}}])
+{ "_id" : "B", "count" : 4 }
+{ "_id" : "A", "count" : 3 }
+{ "_id" : "C", "count" : 2 }
+> db.students.aggregate([ {$group:{_id:'$grade',count:{$sum:1}}}, {$sort:{count:1}}])
+{ "_id" : "C", "count" : 2 }
+{ "_id" : "A", "count" : 3 }
+{ "_id" : "B", "count" : 4 }
+> db.students.aggregate([
+... {$group:{_id:'$age',count:{$sum:1}}},
+... {$sort:{_id:-1}}
+... ])
+{ "_id" : 38, "count" : 1 }
+{ "_id" : 32, "count" : 1 }
+{ "_id" : 28, "count" : 1 }
+{ "_id" : 25, "count" : 1 }
+{ "_id" : 23, "count" : 2 }
+{ "_id" : 21, "count" : 2 }
+{ "_id" : 20, "count" : 1 }
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
